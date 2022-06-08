@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('songs', function (Blueprint $table) {
-            $table->increments('id_song');
-            $table->string('name_song');
-            $table->integer('age_restriction');
-            $table->text('image');
-            $table->text('lyrics');
-            $table->integer('views');
-            $table->string('location');
+        Schema::create('tickets', function (Blueprint $table) {
+            $table->increments('id_ticket');
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_subscription')->nullable();
+            $table->foreign('id_subscription')->references('id_subscription')->on('subscriptions');
         });
     }
 
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('songs');
+        Schema::dropIfExists('tickets');
     }
 };

@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('songs', function (Blueprint $table) {
-            $table->increments('id_song');
-            $table->string('name_song');
-            $table->integer('age_restriction');
-            $table->text('image');
-            $table->text('lyrics');
-            $table->integer('views');
-            $table->string('location');
+        Schema::create('payment_methods', function (Blueprint $table) {
+            $table->increments('id_payment_method');
+            $table->string('bank');
+            $table->integer('transaction_number');
+
+            $table->unsignedBigInteger('id_user')->nullable();
+            $table->foreign('id_user')->references('id_user')->on('users');
+            
             $table->timestamps();
+            
         });
     }
 
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('songs');
+        Schema::dropIfExists('payment_methods');
     }
 };

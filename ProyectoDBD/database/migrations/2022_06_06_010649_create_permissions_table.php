@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('songs', function (Blueprint $table) {
-            $table->increments('id_song');
-            $table->string('name_song');
-            $table->integer('age_restriction');
-            $table->text('image');
-            $table->text('lyrics');
-            $table->integer('views');
-            $table->string('location');
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->increments('id_permission');
+            $table->string('permit_type');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('songs');
+        Schema::dropIfExists('permissions');
     }
 };

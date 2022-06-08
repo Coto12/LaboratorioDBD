@@ -42,4 +42,17 @@ class User extends Model
     {
         return $this->hasMany('App\Models\Address');
     }
+    public function rol_users()
+    {
+        return $this->hasMany('App\Models\RolUser');
+    public function payment_methods()
+    {
+        return $this->hasMany('App\Models\PaymentMethod');
+    }
+    public function follows()
+    {
+        return $this->hasMany('App\Models\Follow');
+    }
+    
+
 }
