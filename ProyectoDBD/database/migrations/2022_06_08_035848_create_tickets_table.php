@@ -14,11 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tickets', function (Blueprint $table) {
-            $table->increments('id_ticket');
+            $table->id();
+            $table->time('date');
+            $table->integer('amount');
             $table->timestamps();
 
             $table->unsignedBigInteger('id_subscription')->nullable();
-            $table->foreign('id_subscription')->references('id_subscription')->on('subscriptions');
+            $table->foreign('id_subscription')->references('id')->on('subscriptions');
+            $table->unsignedBigInteger('id_payment_method')->nullable();
+            $table->foreign('id_payment_method')->references('id')->on('payment_methods');
         });
     }
 

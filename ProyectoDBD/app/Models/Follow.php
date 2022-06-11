@@ -8,12 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Follow extends Model
 {
     use HasFactory;
-     public function users()
+    public function users()
     {
-        return $this->belongTo('App\Models\User');
-    }
-     public function users()
-    {
-        return $this->belongTo('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
 }

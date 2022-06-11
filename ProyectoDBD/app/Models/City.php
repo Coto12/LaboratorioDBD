@@ -8,13 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class City extends Model
 {
     use HasFactory;
+    public function city_users()
+    {
+        return $this->hasMany('App\Models\CityUser');
+    }
+    public function districts()
+    {
+        return $this->hasMany('App\Models\District');
+    }
     public function countries()
     {
         return $this->belongsTo('App\Models\Country');
-    }
-
-    public function addresses()
-    {
-        return $this->hasMany('App\Models\Address');
     }
 }

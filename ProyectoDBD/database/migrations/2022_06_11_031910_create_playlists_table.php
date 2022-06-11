@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
-            $table->increments('id_country');
-            $table->string('name_country');
+        Schema::create('playlists', function (Blueprint $table) {
+            $table->id();
+            $table->string('playlist_name');
+            $table->string('playlist_description');
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_user')->nullable();
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists('playlists');
     }
 };

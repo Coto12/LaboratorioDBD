@@ -11,4 +11,5 @@ class Permission extends Model
     public function permission_rols()
     {
         return $this->hasMany('App\Models\PermissionRol');
+    }
 }

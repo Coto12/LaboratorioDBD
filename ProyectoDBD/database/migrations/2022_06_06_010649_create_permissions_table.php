@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('permissions', function (Blueprint $table) {
-            $table->increments('id_permission');
+            $table->id();
             $table->string('permit_type');
             $table->timestamps();
         });

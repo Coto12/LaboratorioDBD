@@ -10,9 +10,13 @@ class PaymentMethod extends Model
     use HasFactory;
     public function users()
     {
-        return $this->belongTo('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
-    public function Subscriptions()
+    public function subscriptions()
+    {
+        return $this->hasMany('App\Models\Subscription');
+    }
+    public function ticket()
     {
         return $this->hasMany('App\Models\Subscription');
     }

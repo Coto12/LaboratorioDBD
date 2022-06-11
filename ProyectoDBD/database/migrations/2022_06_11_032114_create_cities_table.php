@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
-            $table->increments('id_like');
+        Schema::create('cities', function (Blueprint $table) {
+            $table->id();
+            $table->string('city_name');
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_user')->nullable();
-            $table->foreign('id_user')->references('id_user')->on('users');
-            $table->unsignedBigInteger('id_song')->nullable();
-            $table->foreign('id_song')->references('id_song')->on('songs');
+            $table->unsignedBigInteger('id_country')->nullable();
+            $table->foreign('id_country')->references('id')->on('countries');
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likes');
+        Schema::dropIfExists('cities');
     }
 };

@@ -10,10 +10,10 @@ class RolUser extends Model
     use HasFactory;
     public function roles()
     {
-        return $this->belongTo('App\Models\Role');
+        return $this->belongsTo('App\Models\Role');
     }
     public function users()
     {
-        return $this->belongTo('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
 }

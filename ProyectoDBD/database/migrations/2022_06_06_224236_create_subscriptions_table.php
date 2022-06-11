@@ -14,16 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('subscriptions', function (Blueprint $table) {
-            $table->increments('id_subscription');
+            $table->id();
             $table->integer('amount');
             $table->time('date');
             $table->boolean('verification');
 
             $table->unsignedBigInteger('id_user')->nullable();
-            $table->foreign('id_user')->references('id_user')->on('users');
-            
+            $table->foreign('id_user')->references('id')->on('users');
             $table->unsignedBigInteger('id_payment_method')->nullable();
-            $table->foreign('id_payment_method')->references('id_payment_method')->on('payment_methods');
+            $table->foreign('id_payment_method')->references('id')->on('payment_methods');
         });
     }
 

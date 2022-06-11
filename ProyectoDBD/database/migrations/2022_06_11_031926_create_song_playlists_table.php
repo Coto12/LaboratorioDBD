@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rates', function (Blueprint $table) {
-            $table->increments('id_rate');
-            $table->integer('score');
+        Schema::create('song_playlists', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_user')->nullable();
-            $table->foreign('id_user')->references('id_user')->on('users');
             $table->unsignedBigInteger('id_song')->nullable();
-            $table->foreign('id_song')->references('id_song')->on('songs');
+            $table->foreign('id_song')->references('id')->on('songs');
+            $table->unsignedBigInteger('id_playlist')->nullable();
+            $table->foreign('id_playlist')->references('id')->on('playlists');
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rates');
+        Schema::dropIfExists('song_playlists');
     }
 };

@@ -13,15 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('playlists', function (Blueprint $table) {
-            $table->increments('id_playlist');
-            $table->string('name_playlist');
+        Schema::create('interactions', function (Blueprint $table) {
+            $table->id();
+            $table->integer('views');
+            $table->boolean('isliked');
+            $table->boolean('favs');
+            $table->integer('rated');
             $table->timestamps();
 
             $table->unsignedBigInteger('id_user')->nullable();
-            $table->foreign('id_user')->references('id_user')->on('users');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->unsignedBigInteger('id_song')->nullable();
-            $table->foreign('id_song')->references('id_song')->on('songs');
+            $table->foreign('id_song')->references('id')->on('songs');
         });
     }
 
@@ -32,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('playlists');
+        Schema::dropIfExists('interactions');
     }
 };

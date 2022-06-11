@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('favs', function (Blueprint $table) {
-            $table->increments('id_fav');
+        Schema::create('districts', function (Blueprint $table) {
+            $table->id();
+            $table->string('district_name');
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_user')->nullable();
-            $table->foreign('id_user')->references('id_user')->on('users');
-            $table->unsignedBigInteger('id_song')->nullable();
-            $table->foreign('id_song')->references('id_song')->on('songs');
+            $table->unsignedBigInteger('id_city')->nullable();
+            $table->foreign('id_city')->references('id')->on('cities');
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favs');
+        Schema::dropIfExists('districts');
     }
 };

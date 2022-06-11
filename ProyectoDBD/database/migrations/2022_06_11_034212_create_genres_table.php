@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
-            $table->increments('id_city');
-            $table->string('name_city');
+        Schema::create('genres', function (Blueprint $table) {
+            $table->id();
+            $table->string('genre_name');
+            $table->string('genre_description');
             $table->timestamps();
-
-            $table->unsignedBigInteger('id_country')->nullable();
-            $table->foreign('id_country')->references('id_country')->on('countries');
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('genres');
     }
 };

@@ -10,14 +10,14 @@ class Subscription extends Model
     use HasFactory;
     public function payment_methods()
     {
-        return $this->belongTo('App\Models\PaymentMethod');
+        return $this->belongsTo('App\Models\PaymentMethod');
     }
     public function users()
     {
-        return $this->belongTo('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
-    public function follows()
+    public function ticket()
     {
-        return $this->belongTo('App\Models\Follow');
+        return $this->hasOne('App\Models\Ticket');
     }
 }

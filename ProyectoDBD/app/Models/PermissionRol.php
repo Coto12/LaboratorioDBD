@@ -10,9 +10,10 @@ class PermissionRol extends Model
     use HasFactory;
     public function roles()
     {
-        return $this->belongTo('App\Models\Role');
+        return $this->belongsTo('App\Models\Role');
     }
     public function permissions()
     {
-        return $this->belongTo('App\Models\Permission');
+        return $this->belongsTo('App\Models\Permission');
+    }
 }

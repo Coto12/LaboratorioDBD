@@ -8,33 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Song extends Model
 {
     use HasFactory;
-    public function playlists()
+    public function song_playlist()
     {
-        return $this->hasMany('App\Models\Playlist');
+        return $this->hasMany('App\Models\SongPlaylists');
     }
-
-    public function favs()
+    public function interactions()
     {
-        return $this->hasMany('App\Models\Fav');
+        return $this->hasMany('App\Models\Interaction');
     }
-
-    public function views()
+    public function genre_songs()
     {
-        return $this->hasMany('App\Models\View');
+        return $this->hasMany('App\Models\GenreSong');
     }
-
-    public function likes()
+    public function countries()
     {
-        return $this->hasMany('App\Models\Like');
-    }
-
-    public function rates()
-    {
-        return $this->hasMany('App\Models\Rate');
-    }
-
-    public function genres()
-    {
-        return $this->hasMany('App\Models\Genre');
+        return $this->belongsTo('App\Models\Country');
     }
 }

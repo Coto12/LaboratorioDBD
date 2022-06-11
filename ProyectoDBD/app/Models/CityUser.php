@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Like extends Model
+class CityUser extends Model
 {
     use HasFactory;
-    public function songs()
-    {
-        return $this->belongsTo('App\Models\Song');
-    }
-
     public function users()
     {
         return $this->belongsTo('App\Models\User');
+    }
+    public function cities()
+    {
+        return $this->belongsTo('App\Models\City');
     }
 }

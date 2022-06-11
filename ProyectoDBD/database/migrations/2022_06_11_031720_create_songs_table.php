@@ -14,14 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('songs', function (Blueprint $table) {
-            $table->increments('id_song');
-            $table->string('name_song');
+            $table->id();
+            $table->string('song_name');
             $table->integer('age_restriction');
             $table->text('image');
             $table->text('lyrics');
             $table->integer('views');
-            $table->string('location');
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_country')->nullable();
+            $table->foreign('id_country')->references('id')->on('countries');
         });
     }
 
