@@ -14,11 +14,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory(10)->create();
+        \App\Models\Role::factory(10)->create();
+        \App\Models\RolUser::factory(10)->create();
+        \App\Models\Country::factory(10)->create();
+        \App\Models\Song::factory(10)->create();
+        \App\Models\PaymentMethod::factory(10)->create();
+        \App\Models\Interaction::factory(10)->create();
+        \App\Models\Subscription::factory(10)->create();
+        \App\Models\City::factory(10)->create();
+        \App\Models\Ticket::factory(10)->create();
+        \App\Models\Genre::factory(10)->create();
+        \App\Models\GenreSong::factory(10)->create();
+        \App\Models\Follow::factory(10)->create();
+        \App\Models\City::factory(10)->create();
+        \App\Models\CityUser::factory(10)->create();
+        \App\Models\District::factory(10)->create();
+        \App\Models\Playlist::factory(10)->create();
+        \App\Models\SongPlaylist::factory(10)->create();
     }
 }

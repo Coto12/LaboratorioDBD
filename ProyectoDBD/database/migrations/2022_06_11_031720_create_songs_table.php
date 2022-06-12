@@ -16,10 +16,9 @@ return new class extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
             $table->string('song_name');
-            $table->integer('age_restriction');
+            $table->boolean('age_restriction');
             $table->text('image');
             $table->text('lyrics');
-            $table->integer('views');
             $table->timestamps();
 
             $table->unsignedBigInteger('id_country')->nullable();

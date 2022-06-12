@@ -16,8 +16,8 @@ class PaymentMethod extends Model
     {
         return $this->hasMany('App\Models\Subscription');
     }
-    public function ticket()
+    public function tickets()
     {
-        return $this->hasMany('App\Models\Subscription');
+        return $this->hasMany('App\Models\Ticket');
     }
 }

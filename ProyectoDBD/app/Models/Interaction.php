@@ -14,6 +14,6 @@ class Interaction extends Model
     }
     public function songs()
     {
-        return $this->belongsTo('App\Models\Song');
+        return $this->hasMany('App\Models\Song');
     }
 }

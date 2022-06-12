@@ -17,12 +17,13 @@ return new class extends Migration
             $table->id();
             $table->integer('amount');
             $table->time('date');
-            $table->boolean('verification');
+            $table->string('verification');
 
             $table->unsignedBigInteger('id_user')->nullable();
             $table->foreign('id_user')->references('id')->on('users');
             $table->unsignedBigInteger('id_payment_method')->nullable();
             $table->foreign('id_payment_method')->references('id')->on('payment_methods');
+            $table->timestamps();
         });
     }
 
