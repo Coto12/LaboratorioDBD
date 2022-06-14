@@ -17,7 +17,7 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            'city_name' =>$this->faker->state,
+            'city_name' =>$this->faker->city,
 
             'id_country' => Country::all()->random()->id,
         ];

@@ -3,11 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\City;
+
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\District>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Permission>
  */
-class DistrictFactory extends Factory
+class PermissionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,8 @@ class DistrictFactory extends Factory
     public function definition()
     {
         return [
-            'district_name' =>$this->faker->city,
-            'id_city' => City::all()->random()->id,
+            'permit_type'=>$this->faker->randomElement($array = array ('upload_songs' , 'edit_song', 'delete_song'))
         ];
     }
 }
+

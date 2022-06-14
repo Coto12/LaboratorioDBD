@@ -29,8 +29,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\Follow::factory(10)->create();
         \App\Models\City::factory(10)->create();
         \App\Models\CityUser::factory(10)->create();
-        \App\Models\District::factory(10)->create();
         \App\Models\Playlist::factory(10)->create();
         \App\Models\SongPlaylist::factory(10)->create();
+        \App\Models\Permission::factory(10)->create();
+        \App\Models\PermissionRol::factory(10)->create();
     }
 }

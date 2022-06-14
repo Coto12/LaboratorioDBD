@@ -12,10 +12,6 @@ class City extends Model
     {
         return $this->hasMany('App\Models\CityUser');
     }
-    public function districts()
-    {
-        return $this->hasMany('App\Models\District');
-    }
     public function countries()
     {
         return $this->belongsTo('App\Models\Country');
