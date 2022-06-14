@@ -62,7 +62,7 @@ class SongController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newSong = new Song();
         $newSong->song_name = $request->song_name;
@@ -133,7 +133,7 @@ class SongController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $song = Song::find($id);
         if(empty($song)){

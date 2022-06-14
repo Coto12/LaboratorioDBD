@@ -56,7 +56,7 @@ class GenreController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newGenre = new Genre();
         $newGenre->genre_name = $request->genre_name;
@@ -118,7 +118,7 @@ class GenreController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $genre = Genre::find($id);
         if(empty($genre)){

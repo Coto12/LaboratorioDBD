@@ -61,7 +61,7 @@ class TicketController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newTicket = new Ticket();
         $newTicket->date = $request->date;
@@ -129,7 +129,7 @@ class TicketController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $ticket = Ticket::find($id);
         if(empty($ticket)){

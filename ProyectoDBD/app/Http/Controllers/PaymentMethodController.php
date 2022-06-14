@@ -57,7 +57,7 @@ class PaymentMethodController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newPaymentMethod = new PaymentMethod();        
         $newPaymentMethod->credit_card = $request->credit_card;
@@ -121,7 +121,7 @@ class PaymentMethodController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $paymentMethod = PaymentMethod::find($id);
         if(empty($paymentMethod)){

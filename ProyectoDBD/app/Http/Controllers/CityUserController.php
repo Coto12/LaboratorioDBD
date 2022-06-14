@@ -57,7 +57,7 @@ class CityUserController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newCityUser = new CityUser();
         $newCityUser->zip_code = $request->zip_code;
@@ -121,7 +121,7 @@ class CityUserController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $cityUser = CityUser::find($id);
         if(empty($cityUser)){

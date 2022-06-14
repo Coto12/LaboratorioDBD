@@ -55,7 +55,7 @@ class RolUserController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newRolUser = new RolUser();
         $newRolUser->id_user = $request->id_user;
@@ -116,7 +116,7 @@ class RolUserController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $rolUser = RolUser::find($id);
         if(empty($rolUser)){

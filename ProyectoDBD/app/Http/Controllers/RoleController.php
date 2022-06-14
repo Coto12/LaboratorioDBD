@@ -54,7 +54,7 @@ class RoleController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newRole = new Role();
         $newRole->role_type = $request->role_type;
@@ -114,7 +114,7 @@ class RoleController extends Controller
             );
 
             if ($validator->fails()) {
-                return response($validator->erros());
+                return response($validator->errors());
             }
             $role = Role::find($id);
             if(empty($role)){

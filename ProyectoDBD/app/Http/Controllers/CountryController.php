@@ -54,7 +54,7 @@ class CountryController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros());
+            return response($validator->errors());
         }
         $newCountry = new Country();
         $newCountry->country_name = $request->country_name;
@@ -113,7 +113,7 @@ class CountryController extends Controller
             ]
         );
         if ($validator->fails()) {
-            return response($validator->erros());
+            return response($validator->errors());
         }
         $country = Country::find($id);
         if(empty($country)){

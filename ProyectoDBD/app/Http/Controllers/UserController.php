@@ -49,19 +49,19 @@ class UserController extends Controller
                 'email' => 'required',
                 'name' => 'required|min:2',
                 'password' => 'required|min:8',
-                'birth_date' => 'required'
+                'birth_date' => 'required',
             ],
             [
                 'email.required' => 'Debes ingresar un email',
                 'name.required' => 'Debes ingresar un nombre',
-                'name.min' => 'El nombre de usuario debe tener un minimo de 2 caracteres',
+                'name.min' => 'El nombre de usuario debe tener un minimo de :min',
                 'password.required' => 'Debes ingresar una contraseña',
                 'password.min' => 'La contraseña debe tener un minimo de 8 caracteres',
-                'birth_date.required' => 'Debes ingresar una fecha de cumpleaños con el formato: AAAA-MM-DD'
+                'birth_date' => 'Debes ingresar una fecha de cumpleaños con el formato: AAAA-MM-DD',
             ]
-            );
+        );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors());
         }
         $newUser = new User();
         $newUser->email = $request->email;
@@ -118,7 +118,7 @@ class UserController extends Controller
                 'email' => 'required',
                 'name' => 'required|min:2',
                 'password' => 'required|min:8',
-                'birth_date' => 'required'
+                'birth_date' => 'required',
             ],
             [
                 'email.required' => 'Debes ingresar un email',
@@ -126,11 +126,11 @@ class UserController extends Controller
                 'name.min' => 'El nombre de usuario debe tener un minimo de 2 caracteres',
                 'password.required' => 'Debes ingresar una contraseña',
                 'password.min' => 'La contraseña debe tener un minimo de 8 caracteres',
-                'birth_date' => 'Debes ingresar una fecha de cumpleaños con el formato: AAAA-MM-DD'
+                'birth_date' => 'Debes ingresar una fecha de cumpleaños con el formato: AAAA-MM-DD',
             ]
         );
         if ($validator->fails()) {
-            return response($validator->erros());
+            return response($validator->errors());
         }
         $user = User::find($id);
         if(empty($user)){

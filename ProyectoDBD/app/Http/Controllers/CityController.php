@@ -52,11 +52,11 @@ class CityController extends Controller
             [
                 'city_name.required' => 'Debes ingresar un nombre para tu ciudad',
                 'city_name.min' => 'El nombre de la ciudad debe tener un minimo de 2 letras',
-                'id_country.required' => 'Debes ingresar un id ciudad'
+                'id_country.required' => 'Debes ingresar un id ciudad',
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors());
         }
         $newCity = new City();
         $newCity->city_name = $request->city_name;
@@ -114,11 +114,11 @@ class CityController extends Controller
             [
                 'city_name.required' => 'Debes ingresar un nombre para tu ciudad',
                 'city_name.min' => 'El nombre del a ciudad debe tener un minimo de 2 letras',
-                'id_country.required' => 'Debes ingresar un id ciudad'
+                'id_country.required' => 'Debes ingresar un id ciudad',
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors());
         }
         $city = City::find($id);
         if(empty($city)){

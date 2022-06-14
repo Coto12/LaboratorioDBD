@@ -63,7 +63,7 @@ class InteractionController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newInteraction = new Interaction();
         $newInteraction->views = $request->views;
@@ -136,7 +136,7 @@ class InteractionController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $interaction = Interaction::find($id);
         if(empty($interaction)){

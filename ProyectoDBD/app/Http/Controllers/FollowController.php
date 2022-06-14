@@ -55,7 +55,7 @@ class FollowController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newFollow = new Follow();
         $newFollow->id_follower = $request->id_follower;
@@ -116,7 +116,7 @@ class FollowController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $follow = Follow::find($id);
         if(empty($follow)){

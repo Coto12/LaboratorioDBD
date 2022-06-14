@@ -58,7 +58,7 @@ class GenreSongController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newGenreSong = new GenreSong();
         $newGenreSong->genre_song_name = $request->genre_song_name;
@@ -123,7 +123,7 @@ class GenreSongController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $genreSong = GenreSong::find($id);
         if(empty($genreSong)){

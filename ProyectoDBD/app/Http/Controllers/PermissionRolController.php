@@ -55,7 +55,7 @@ class PermissionRolController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newPermissionRol = new PermissionRol();
         $newPermissionRol->id_permission = $request->id_permission;
@@ -116,7 +116,7 @@ class PermissionRolController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $permissionRol = PermissionRol::find($id);
         if(empty($permissionRol)){

@@ -62,7 +62,7 @@ class SubscriptionController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newSubscription = new Subscription();
         $newSubscription->amount = $request->amount;
@@ -133,7 +133,7 @@ class SubscriptionController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $subscription = Subscription::find($id);
         if(empty($subscription)){

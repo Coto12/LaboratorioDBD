@@ -55,7 +55,7 @@ class SongPlaylistController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newSongPlaylist = new SongPlaylist();
         $newSongPlaylist->id_song = $request->id_song;
@@ -116,7 +116,7 @@ class SongPlaylistController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $songPlaylist = SongPlaylist::find($id);
         if(empty($songPlaylist)){

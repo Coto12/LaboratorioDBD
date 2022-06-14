@@ -58,7 +58,7 @@ class PlaylistController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $newPlaylist = new Playlist();
         $newPlaylist->playlist_name = $request->playlist_name;
@@ -123,7 +123,7 @@ class PlaylistController extends Controller
             ]
             );
         if ($validator->fails()) {
-            return response($validator->erros(), 400);
+            return response($validator->errors(), 400);
         }
         $playlist = Playlist::find($id);
         if(empty($playlist)){
