@@ -20,6 +20,7 @@ use App\Http\Controllers\CityUserController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\GenreSongController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,12 +33,18 @@ use App\Http\Controllers\GenreSongController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
-//ruta controladores usuario
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+
+
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/user/{id}', [UserController::class, 'show']);
-Route::post('/user/create', [UserController::class, 'store']);
+Route::post('/', 'UserController@store');
 Route::put('/user/update/{id}', [UserController::class, 'update']);
 Route::delete('/user/delete/{id}', [UserController::class, 'destroy']);
 //ruta controladores pais
