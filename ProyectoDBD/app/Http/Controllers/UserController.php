@@ -49,7 +49,7 @@ class UserController extends Controller
                 'email' => 'required',
                 'name' => 'required|min:2',
                 'password' => 'required|min:8',
-                'birth_date' => 'required',
+                'birth_date' => 'required'
             ],
             [
                 'email.required' => 'Debes ingresar un email',
@@ -57,16 +57,19 @@ class UserController extends Controller
                 'name.min' => 'El nombre de usuario debe tener un minimo de :min',
                 'password.required' => 'Debes ingresar una contraseña',
                 'password.min' => 'La contraseña debe tener un minimo de 8 caracteres',
-                'birth_date' => 'Debes ingresar una fecha de cumpleaños con el formato: AAAA-MM-DD',
+                'birth_date' => 'Debes ingresar una fecha de cumpleaños con el formato: AAAA-MM-DD'
             ]
         );
+
+        $validator->validate();
+
         if ($validator->fails()) {
             return response($validator->errors());
         }
         $newUser = new User();
         $newUser->email = $request->email;
         $newUser->name = $request->name;
-        $newUser->password = $request->password;
+        $newUser->password = bcrypt($request->password);
         $newUser->birth_date = $request->birth_date;
         $newUser->save();
 

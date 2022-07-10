@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+
+
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\RoleController;
@@ -21,30 +27,60 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\GenreSongController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+
+
+Route::view('/','welcome');
+Route::view('login','login')->name('login')->middleware('guest');
+Route::view('dashboard','dashboard');
+
+Route::post('login', function() {
+    $credentials = request()->validate([
+        'email' =>  'required|email|string',
+        'password' => 'required| string'
+    ],[
+        'email.required' => 'Debes ingresar un correo',
+        'email.email' => 'El formato del correo no es correcto',
+        'password.required' => 'Debes ingresar una contraseña'
+
+    ]);
+    
+    //$remember = request()->filled('remember');
+
+    if (Auth::attempt($credentials)){
+        request()->session()->regenerate();
+
+        return redirect('dashboard');
+    }
+    throw ValidationException::withMessages([
+        'email' => 'Contraseña e email no coinciden'
+    ]);
 });
 
+
+
+
+
+
+
+
+Route::post('logout', function() {
+    
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+
+    return redirect('login');
+   
+});
 
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/user/{id}', [UserController::class, 'show']);
-Route::post('/', 'UserController@store');
+Route::post('/user/create', [UserController::class, 'store']);
 Route::put('/user/update/{id}', [UserController::class, 'update']);
 Route::delete('/user/delete/{id}', [UserController::class, 'destroy']);
 //ruta controladores pais
