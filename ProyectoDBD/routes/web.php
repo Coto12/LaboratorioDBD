@@ -60,13 +60,6 @@ Route::post('login', function() {
     ]);
 });
 
-
-
-
-
-
-
-
 Route::post('logout', function() {
     
     Auth::logout();
@@ -76,7 +69,6 @@ Route::post('logout', function() {
     return redirect('login');
    
 });
-
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/user/{id}', [UserController::class, 'show']);
