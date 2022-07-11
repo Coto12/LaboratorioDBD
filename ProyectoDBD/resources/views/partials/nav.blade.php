@@ -1,7 +1,8 @@
-<a href="/">Inicio</a>
+<a href="/home">Inicio</a>
 @auth
     <a href="/dashboard">Dashboard</a>
-    
+    <a href="/dashboard">Actualizar nombre de usuario</a>
+    <a href="/createSong">Subir canción</a>
     <form style= "display: inline" action= "/logout" method="POST"> 
     @csrf
         <a style="cursor:pointer;"
@@ -12,4 +13,5 @@
 
 @else
     <a href="/login">Login</a>
+    <a href="/register">Register</a>
 @endauth

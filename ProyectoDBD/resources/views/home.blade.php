@@ -37,7 +37,7 @@
                     <li>
                         <!-- Button trigger modal Inicio sesión -->
                         <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Iniciar sesión
+                            <a href="/login">Iniciar sesión</a>
                         </button>
                         <!-- Modal -->
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -88,7 +88,7 @@
                         <!-- Button trigger modal Registro -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#staticBackdropLabelRegistro">
-                            Registrarse
+                            <a href="/register">Registrarte</a>
                         </button>
                         <!-- Modal -->
                         <div class="modal fade" id="staticBackdropLabelRegistro" data-bs-backdrop="static"
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <!-- VALIDACIÓN REGISTRO VALIDACIÓN REGISTRO VALIDACIÓN REGISTRO VALIDACIÓN REGISTRO VALIDACIÓN REGISTRO -->
-                                        <form class="row g-3" method = "POST" action="{{action('UserController@store')}}">
+                                        <form class="row g-3" method = "POST" action="">
                                             <div class="col-md-4">
                                                 <label for="validationServer01" class="form-label">Nombre</label>
                                                 <input type="text" class="form-control is-valid" id="validationServer01"

@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Follow;
+use App\Models\Role;
+use App\Models\RolUser;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+    public function perfil(){
+        $users=User::get();
+        $roles=Role::get();
+        $follows=Follow::get();
+        $rols_users=RolUser::get();
+        return view('nav',['follows'=>$follows,'users'=>$users,'roles'=>$roles, 'rols_users'=>$rols_users]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +37,18 @@ class UserController extends Controller
         return response($users, 200);
     }
 
+
+    public function createUser()
+    {
+        $UserRequest = new \Illuminate\Http\Request();
+        $UserRequest->request->add(['name' =>$request->name]);
+        $UserRequest->request->add(['email' =>$request->email]);
+        $UserRequest->request->add(['password' =>$request->password]);
+        $UserRequest->request->add(['birth_date' =>$request->birth_date]);
+
+        app('App\Http\Controllers\UserController')->store($UserRequest);
+        return redirect('/login');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +67,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //z
         $validator = Validator::make(
             $request->all(),[
                 'email' => 'required',
@@ -73,10 +97,7 @@ class UserController extends Controller
         $newUser->birth_date = $request->birth_date;
         $newUser->save();
 
-        return response()->json([
-            'respuesta' => 'Se ha creado un nuevo usuario con el id:',
-            'id' => $newUser->id
-        ], 201);
+        return redirect('/login');
     }
 
     /**
@@ -106,6 +127,16 @@ class UserController extends Controller
         //
     }
 
+
+    public function updateUser(Request $request, $id)
+    {
+        $updateRequest = new \Illuminate\Http\Request();
+        $updateRequest->setMethod('POST');
+        $updateRequest->request->add(['name' =>$request->name]);
+
+        app('App\Http\Controllers\UserController')->update($UserRequest, $id);
+        return redirect('/dashboard');
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -118,18 +149,11 @@ class UserController extends Controller
         //
         $validator = Validator::make(
             $request->all(),[
-                'email' => 'required',
-                'name' => 'required|min:2',
-                'password' => 'required|min:8',
-                'birth_date' => 'required',
+                'name' => 'required|min:2'
             ],
             [
-                'email.required' => 'Debes ingresar un email',
                 'name.required' => 'Debes ingresar un nombre',
                 'name.min' => 'El nombre de usuario debe tener un minimo de 2 caracteres',
-                'password.required' => 'Debes ingresar una contraseña',
-                'password.min' => 'La contraseña debe tener un minimo de 8 caracteres',
-                'birth_date' => 'Debes ingresar una fecha de cumpleaños con el formato: AAAA-MM-DD',
             ]
         );
         if ($validator->fails()) {
@@ -139,15 +163,9 @@ class UserController extends Controller
         if(empty($user)){
             return response()->json([]);
         }
-        $user->email = $request->email;
         $user->name = $request->name;
-        $user->password = $request->password;
-        $user->birth_date = $request->birth_date;
         $user->save();
-        return response()->json([
-            'respuesta' => 'Se ha modificado el usuario con el id:',
-            'id' => $user->id
-        ], 200);
+        return redirect('/dashboard');
     }
 
     /**

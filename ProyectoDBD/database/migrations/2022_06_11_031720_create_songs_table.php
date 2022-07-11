@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
             $table->string('song_name');
-            $table->boolean('age_restriction');
+            $table->boolean('age_restriction')->nullable();
             $table->text('image');
             $table->text('lyrics');
             $table->timestamps();

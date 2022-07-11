@@ -27,15 +27,13 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\GenreSongController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 
-Route::view('/','welcome');
-Route::view('login','login')->name('login')->middleware('guest');
+Route::view('login','login');
 Route::view('dashboard','dashboard');
+Route::view('home', 'home');
+
 
 Route::post('login', function() {
     $credentials = request()->validate([
@@ -69,6 +67,25 @@ Route::post('logout', function() {
     return redirect('login');
    
 });
+//RUTA UPDATE
+Route::get('/update', function(){
+    return view('updateUser');
+});
+//RUTA REGISTER
+Route::get('/register', function () {
+    return view('register');
+});
+//RUTA CREATESONG
+Route::get('/createSong', function () {
+    return view('createsong');
+});
+
+//RUTA CREATESONG CARGA
+Route::post('song/createSong', [SongController::class, 'createSong']);
+//RUTA REGISTER CARGA 
+Route::post('users/register', [UserController::class, 'createUser']);
+//RUTA UPDATE CARGA
+Route::put('/user/actualizar/{id}',[UserController::class, 'update']);
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/user/{id}', [UserController::class, 'show']);

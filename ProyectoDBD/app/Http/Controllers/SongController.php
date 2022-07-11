@@ -35,22 +35,32 @@ class SongController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+    public function createSong()
+    {
+        $SongRequest = new \Illuminate\Http\Request();
+        $SongRequest->request->add(['song_name' =>$request->song_name]);
+        $SongRequest->request->add(['age_restriction' =>$request->age_restriction]);
+        $SongRequest->request->add(['image' =>$request->image]);
+        $SongRequest->request->add(['lyrics' =>$request->lyrics]);
+
+        app('App\Http\Controllers\SongController')->store($SongRequest);
+        return redirect('/dashboard');
+    }
+
+
+     
     public function store(Request $request)
     {
-        //
+         //$request = request()->filled('age_restriction');
+        
+
         $validator = Validator::make(
             $request->all(),[
                 'song_name' => 'required|min:2',
                 'age_restriction' => 'required',
                 'image' => 'required',
                 'lyrics' => 'required',
-                'id_country' => 'required'
             ],
             [
                 'song_name.required' => 'Debes ingresar un nombre para tu cancion',
@@ -72,10 +82,7 @@ class SongController extends Controller
         $newSong->id_country = $request->id_country;
         $newSong->save();
 
-        return response()->json([
-            'respuesta' => 'Se ha creado una nueva cancion con el id:',
-            'id' => $newSong->id
-        ], 201);
+        return redirect('/dashboard');
     }
 
     /**

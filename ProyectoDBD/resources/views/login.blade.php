@@ -26,7 +26,7 @@
     <form action="" method="POST">
         @csrf
         <label>
-            <input value="{{ old('emal')}}"  required type="test" placeholder="Correo@ejemplo.com" name="email" id="email">
+            <input value="{{ old('email')}}"  required type="test" placeholder="Correo@ejemplo.com" name="email" id="email">
         </label><br>
         <label>
             <input required type="password" name="password" id="password">
